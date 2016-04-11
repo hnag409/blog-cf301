@@ -24,7 +24,7 @@ Article.prototype.toHtml = function() {
   $newArticle.find('a').text(this.author);
   $newArticle.find('a').attr('href',this.authorUrl);
   $newArticle.find('time').attr('datetime',this.publishedOn);
-  $newArticle.find('.article-body').text(this.body);
+  $newArticle.find('.article-body').html(this.body);
 
 
   // Include the publication date as a 'title' attribute to show on hover:
