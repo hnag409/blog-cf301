@@ -40,27 +40,19 @@ articleView.handleAuthorFilter = function() {
           var thisName = $(this).find('address > a').text();
           if (thisName == searchedName) {
               $(this).show();
-          } else {
-              console.log("elseThing");
           }
       });
 
-    // .filter() attempts below
-    //   $('article').filter(function(ii) {
-    //       var authorName = $('article').index(ii).find('address a').val;
-    //       if ($(this).val() == authorName) {
-    //            $('article').index(ii).show();
-    //       }
-    //   })
-      console.log("testing handleAuthorFilter");
     } else {
       // TODO: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
+      $('article:not(.template)').show();
 
     }
     $('#category-filter').val('');
   });
 };
+
 
 articleView.handleCategoryFilter = function() {
   // TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
