@@ -118,8 +118,16 @@ articleView.setTeasers = function() {
 };
 
 // TODO: Call all of the above functions, once we are sure the DOM is ready.
-$(document).ready(articleView.populateFilters);
-$(document).ready(articleView.handleAuthorFilter);
-$(document).ready(articleView.handleCategoryFilter);
-$(document).ready(articleView.handleMainNav);
-$(document).ready(articleView.setTeasers);
+// $(document).ready(articleView.populateFilters);
+// $(document).ready(articleView.handleAuthorFilter);
+// $(document).ready(articleView.handleCategoryFilter);
+// $(document).ready(articleView.handleMainNav);
+// $(document).ready(articleView.setTeasers);
+
+$(document).ready(function() {
+    articleView.populateFilters();
+    articleView.handleAuthorFilter();
+    articleView.handleCategoryFilter();
+    articleView.handleMainNav();
+    articleView.setTeasers();
+});
