@@ -1,8 +1,6 @@
 var articles = [];
 
 function Article (opts) {
-  // TODO: Use the js object passed in to complete this contructor function:
-  // Save ALL the properties of `opts` into `this`.
   this.title = opts.title;
   this.author = opts.author;
   this.category = opts.category;
@@ -13,16 +11,18 @@ function Article (opts) {
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
+  $newArticle.removeClass('template');
+  if (!this.publishedOn) {
+    $newArticle.addClass('draft');
+  }
 
   $newArticle.attr('data-category', this.category);
+  // TODO: Use jQuery to also add the author name as a data-attribute of the newly cloned article.
+  //       Doing so will allow us to use selectors to target articles, based on who wrote them.
 
-  // TODO: Use jQuery to fill in the template with properties
-  // from this particular Article instance. We need to fill in:
-  // the author name and url, the article title and body, and the
-  // publication date.
-  $newArticle.find('h1').text(this.title);
-  $newArticle.find('a').text(this.author);
-  $newArticle.find('a').attr('href',this.authorUrl);
+  $newArticle.find('h1:first').text(this.title);
+  $newArticle.find('.byline a').text(this.author);
+  $newArticle.find('.byline a').attr('href',this.authorUrl);
   $newArticle.find('time').attr('datetime',this.publishedOn);
   $newArticle.find('.article-body').html(this.body);
 
@@ -35,8 +35,6 @@ Article.prototype.toHtml = function() {
 
   $newArticle.append('<hr>');
 
-  // TODO: This cloned article is no longer a template, so we should remove that class...
-  $newArticle.removeClass('template');
   return $newArticle;
 }
 
